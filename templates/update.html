@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Pet Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Update Pet</h1>
+
+    <div class="form">
+        <form action="/update/{{pet.id}}" method="POST">
+            <input type="text" name="content" id="content" class="form-control mx-auto d-block mt-4" value="{{pet.content}}">
+            <input type="submit" class="btn btn-danger mt-4 mx-auto d-block" value="Update" style="font-size: 1.2rem;">
+        </form>
+    </div>
+</div>
+{% endblock %}

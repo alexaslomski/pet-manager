@@ -1,0 +1,53 @@
+<!--FREECODECAMP TUTORIAL ON YOUTUBE: LEARN FLASK FOR PYTHON MAY 28 2019-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Pet manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content mx-auto">
+    <h1 style="text-align: center">Pet Manager</h1>
+    {% if pets|length < 1 %}
+    <h4 style="text-align: center">There are no pets. Add one below!</h4>
+    {% else %}
+
+<table class="table table-danger mt-4">
+    <tr>
+      <th scope="col">Pet Type</th>
+      <th scope="col">Added</th>
+      <th scope="col">Actions</th>
+    </tr>
+
+     {% for pet in pets %}
+    <tr>
+     <td>{{ pet.content }}</td>
+                <td>{{ pet.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{pet.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{pet.id}}">Update</a>
+                </td>
+    </tr>
+  {% endfor %}
+</table>
+
+   
+
+{% endif %}
+
+
+
+
+
+
+
+ <div class="form">
+        <form action="/" method="POST">
+            <input type="text" class="form-control mx-auto d-block" name="content" id="content" style="font-size: 1.2rem; width: 70%;">
+            <input type="submit" class="btn btn-danger mx-auto d-block mt-2" value="Add Pet" style="font-size: 1.2rem; color: white;">
+        </form>
+    </div>
+</div>
+{% endblock %}
